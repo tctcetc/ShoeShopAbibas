@@ -92,10 +92,12 @@ public class ManagerServlet extends HttpServlet {
                 request.getRequestDispatcher("/addShoes.jsp").forward(request, response);
                 break;
             case "/createShoes":
-                String pathToDir = "D:\\UploadDir\\ShoeShopWebPU";
+                String pathToDir = "/opt/uploadDir/ShoeShopAbibas";
                 //String pathToDir = "C:\\UploadDir\\ShoeShopWebPU";
                 Part part = request.getPart("photo");
                 String filename = getFileName(part);
+                File uploadDir = new File(pathToDir);
+                uploadDir.mkdirs();
                 String pathToFile = pathToDir+File.separator+filename;
                 File file = new File(pathToFile);
                 file.mkdirs();
